@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Баланс в кішені</string>
+    <string name="enter_pin">Введіть ПІН</string>
+    <string name="re_enter_pin">Повторіть ПІН</string>
+    <string name="hello_blank_fragment">Домашня</string>
+    <string name="exit_the_app">Вийти з додатку?</string>
+    <string name="confirm">Підтвердження</string>
+    <string name="yes">Так</string>
+    <string name="no">Ні</string>
+</resources>

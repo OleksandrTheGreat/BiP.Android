@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Balance in pocket</string>
+    <string name="enter_pin">Enter PIN</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello</string>
+    <string name="re_enter_pin">Re-enter PIN</string>
+    <string name="exit_the_app">Exit the application?</string>
+    <string name="confirm">Confirm</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+</resources>
