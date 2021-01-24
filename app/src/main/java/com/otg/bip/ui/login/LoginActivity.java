@@ -38,7 +38,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
     }
 
     @Override
-    public void showRegisterUserFragment(int pin) {
+    public void showRegisterUserFragment(String pin) {
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.loginFragment, new LoginReEnterPinFragment(_presenter, pin))

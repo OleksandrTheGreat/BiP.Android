@@ -19,9 +19,9 @@ import com.otg.bip.mvp.login.LoginPresenter;
 public class LoginReEnterPinFragment extends Fragment {
 
     private final LoginPresenter _presenter;
-    private final int _pin;
+    private final String _pin;
 
-    public LoginReEnterPinFragment(LoginPresenter presenter, int  pin) {
+    public LoginReEnterPinFragment(LoginPresenter presenter, String  pin) {
         _presenter = presenter;
         _pin = pin;
     }

@@ -15,9 +15,9 @@ public class User {
 
     @ColumnInfo(name = TABLE.COLUMNS.PIN.NAME)
     @NonNull
-    public int pin;
+    public String pin;
 
-    public User(String id, int pin) {
+    public User(String id, String pin) {
         this.id = id;
         this.pin = pin;
     }
@@ -34,7 +34,7 @@ public class User {
             }
             public static final class PIN {
                 public static final String NAME = "pin";
-                public static final int NULL_VALUE = -1;
+                public static final String NULL_VALUE = "NULL";
             }
         }
     }
