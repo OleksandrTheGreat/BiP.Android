@@ -1,7 +1,6 @@
 package com.otg.bip.ui.home;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.widget.ListView;
@@ -36,7 +35,6 @@ public class HomeActivity extends AppCompatActivity implements IHomeView {
 
     @Override
     public void onBackPressed() {
-
         Dialog.Confirm.Open(
                 this,
                 getString(R.string.exit_the_app),
@@ -50,12 +48,7 @@ public class HomeActivity extends AppCompatActivity implements IHomeView {
 
     @Override
     public void displayAccounts(AccountModel[] accounts) {
-
-        HomeAccountsListAdapter adapter = new HomeAccountsListAdapter(this, R.layout.home_accounts, accounts);
+        HomeAccountsListAdapter adapter = new HomeAccountsListAdapter(this, R.layout.home_account, accounts);
         _accountsView.setAdapter(adapter);
-
-        for (int i = 0; i < accounts.length; i++) {
-            Logger.Debug("Account \"" + accounts[i].account.name + "(" + accounts[i].currency.id + ")");
-        }
     }
 }
