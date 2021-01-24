@@ -25,13 +25,18 @@ public class Account {
 
     @ColumnInfo(name = TABLE.COLUMNS.BALANCE.NAME)
     @NonNull
-    public float balance;
+    public double balance;
 
-    public Account(String id, String name, String currencyId,  float balance) {
+    @ColumnInfo(name = TABLE.COLUMNS.TYPE.NAME)
+    @NonNull
+    public int type;
+
+    public Account(String id, String name, String currencyId,  double balance, int type) {
         this.id = id;
         this.name = name;
         this.currencyId = currencyId;
         this.balance = balance;
+        this.type = type;
     }
 
     /* Schema */
@@ -52,6 +57,15 @@ public class Account {
             public static final class BALANCE {
                 public static final String NAME = "balance";
             }
+            public static final class TYPE {
+                public static final String NAME = "type";
+            }
         }
+    }
+
+    public static final class TYPE {
+        public static final int ACTIVE = 0;
+        public static final int PASSIVE = 1;
+        public static final int ACTIVE_PASSIVE = 2;
     }
 }

@@ -1,8 +1,5 @@
 package com.otg.bip.data.db;
 
-import android.content.ContentValues;
-import android.database.sqlite.SQLiteDatabase;
-
 import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
@@ -58,9 +55,9 @@ public abstract class AppDatabase extends RoomDatabase {
                             );
 
                             getInstance().accountDao().insert(
-                                    new Account(UUID.randomUUID().toString(), "Wallet/Гаманець", "UAH", 0),
-                                    new Account(UUID.randomUUID().toString(), "Card/Карта", "UAH", 0),
-                                    new Account(UUID.randomUUID().toString(), "Reserved/Резерв", "UAH", 0)
+                                    new Account(UUID.randomUUID().toString(), "Wallet/Гаманець", "UAH", 0, Account.TYPE.ACTIVE),
+                                    new Account(UUID.randomUUID().toString(), "Card/Карта", "UAH", 0, Account.TYPE.ACTIVE),
+                                    new Account(UUID.randomUUID().toString(), "Reserved/Резерв", "UAH", 0, Account.TYPE.ACTIVE)
                             );
                         });
                     }

@@ -35,4 +35,5 @@ local.properties
 .Trashes
 ehthumbs.db
 Thumbs.db
-/*.log
+*.log
+*.ser

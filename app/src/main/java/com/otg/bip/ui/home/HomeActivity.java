@@ -1,8 +1,10 @@
 package com.otg.bip.ui.home;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.ListView;
 
 import com.otg.bip.R;
 import com.otg.bip.data.db.AppDatabase;
@@ -15,6 +17,7 @@ import com.otg.bip.ui.tools.Dialog;
 public class HomeActivity extends AppCompatActivity implements IHomeView {
 
     private HomePresenter _presenter;
+    private ListView _accountsView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +25,7 @@ public class HomeActivity extends AppCompatActivity implements IHomeView {
         setContentView(R.layout.home_activity);
 
         _presenter = new HomePresenter(this);
+        _accountsView = (ListView)findViewById(R.id.home_accounts_view);
     }
 
     @Override
@@ -46,6 +50,10 @@ public class HomeActivity extends AppCompatActivity implements IHomeView {
 
     @Override
     public void displayAccounts(AccountModel[] accounts) {
+
+        HomeAccountsListAdapter adapter = new HomeAccountsListAdapter(this, R.layout.home_accounts, accounts);
+        _accountsView.setAdapter(adapter);
+
         for (int i = 0; i < accounts.length; i++) {
             Logger.Debug("Account \"" + accounts[i].account.name + "(" + accounts[i].currency.id + ")");
         }
