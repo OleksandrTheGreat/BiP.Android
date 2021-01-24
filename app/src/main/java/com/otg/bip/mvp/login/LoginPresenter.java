@@ -49,9 +49,7 @@ public class LoginPresenter {
             return;
         }
 
-        int reEnteredPin = parsePin(pinInput);
-
-        if (enteredPin.equals(reEnteredPin)) {
+        if (enteredPin.equals(pinInput)) {
             registerUser(enteredPin);
             return;
         }
@@ -69,10 +67,6 @@ public class LoginPresenter {
 
     private boolean isPinEntered(String pinInput) {
         return pinInput.length() == _pinLength;
-    }
-
-    private int parsePin(String pinInput) {
-        return Integer.parseInt(pinInput);
     }
 
     private boolean isFirstEntrance() {
