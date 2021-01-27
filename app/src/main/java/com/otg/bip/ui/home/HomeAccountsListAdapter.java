@@ -1,52 +1,59 @@
 package com.otg.bip.ui.home;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.otg.bip.R;
 import com.otg.bip.data.db.models.AccountModel;
 import com.otg.bip.infrastructure.Tools;
 
-public class HomeAccountsListAdapter extends ArrayAdapter<AccountModel> {
+public class HomeAccountsListAdapter extends RecyclerView.Adapter<HomeAccountsListAdapter.ViewHolder> {
 
-    private final Context _context;
-    private final int _resource;
+    private AccountModel[] _data;
 
-    public HomeAccountsListAdapter(@NonNull Context context, int resource, @NonNull AccountModel[] objects) {
-        super(context, resource, objects);
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        _context = context;
-        _resource = resource;
+        public final TextView nameTextView;
+        public final TextView balanceTextView;
+        public final TextView currencyTextView;
+
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            nameTextView = itemView.findViewById(R.id.home_account_name);
+            balanceTextView = itemView.findViewById(R.id.home_account_balance);
+            currencyTextView = itemView.findViewById(R.id.home_account_currency);
+        }
+    }
+
+    public void setData(AccountModel[] data) {
+        _data = data;
     }
 
     @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_account, parent, false);
+        return new ViewHolder(view);
+    }
 
-        AccountModel model = getItem(position);
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        String name = model.account.name;
-        double balance = model.account.balance;
-        String currency = model.currency.id;
+        AccountModel item = _data[position];
 
-        LayoutInflater inflater = LayoutInflater.from(_context);
-        convertView = inflater.inflate(_resource, parent, false);
+        holder.nameTextView.setText(item.account.name);
+        holder.balanceTextView.setText(Tools.Currency.format(item.account.balance));
+        holder.currencyTextView.setText(item.currency.id);
+    }
 
-        TextView nameTextView = convertView.findViewById(R.id.home_account_name);
-        TextView balanceTextView = convertView.findViewById(R.id.home_account_balance);
-        TextView currencyTextView = convertView.findViewById(R.id.home_account_currency);
-
-        nameTextView.setText(name);
-        balanceTextView.setText(Tools.Currency.format(balance));
-        currencyTextView.setText(currency);
-
-        return convertView;
+    @Override
+    public int getItemCount() {
+        return _data.length;
     }
 }
